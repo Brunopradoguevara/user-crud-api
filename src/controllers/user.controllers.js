@@ -25,7 +25,7 @@ const update = catchError(async(req,res)=>{
     const {first_name,last_name,email,password,birthday} = req.body;
     const user = await User.update({first_name,last_name,email,password,birthday},
         {where:{id:id},returning:true});
-    return res.json(user);
+    return res.json(user[1][0]);
 })
 
 module.exports = {
